@@ -243,3 +243,24 @@ function sha256 {
         }
     }
 }
+
+# Activate clash proxy policy
+function proxy {
+    $env:http_proxy = "http://127.0.0.1:7890"
+    $env:https_proxy = "http://127.0.0.1:7890"
+    $env:all_proxy = "socks5://127.0.0.1:7890"
+}
+
+# Deactivate clash proxy policy
+function unproxy {
+    $env:http_proxy = ""
+    $env:https_proxy = ""
+    $env:all_proxy = ""
+}
+
+# Show current proxy policy
+function show-proxy {
+    Write-Output "http_proxy: $env:http_proxy"
+    Write-Output "https_proxy: $env:https_proxy"
+    Write-Output "all_proxy: $env:all_proxy"
+}
